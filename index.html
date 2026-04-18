@@ -1,14 +1,22 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/gravity-flip/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>gravity-flip</title>
-    <script type="module" crossorigin src="/gravity-flip/assets/index-DSpUFtoX.js"></script>
-    <link rel="stylesheet" crossorigin href="/gravity-flip/assets/index-CsUDhMuy.css">
+    <title>Gravity Flip</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="module" crossorigin src="/gravity-flip/assets/index-t1MSoCy4.js"></script>
   </head>
   <body>
-    <div id="app"></div>
+    <div id="gf-wrap">
+      <div id="hud">
+        <div class="hud-box"><div class="hud-label">score</div><div class="hud-val" id="gf-score">0</div></div>
+        <div class="hud-box"><div class="hud-label">best</div><div class="hud-val" id="gf-best">0</div></div>
+        <div class="hud-box"><div class="hud-label">speed</div><div class="hud-val" id="gf-speed">1x</div></div>
+      </div>
+      <div id="combo-flash"></div>
+      <canvas id="gf-canvas"></canvas>
+      <div id="gf-hint">tap · click · spacebar to flip gravity</div>
+    </div>
   </body>
 </html>
