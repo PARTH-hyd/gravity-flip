@@ -1,9 +1,11 @@
-const W = 420, H = 260;
+const W = window.innerWidth;
+const H = window.innerHeight;
 const GROUND = H - 40, CEIL = 40;
 const PW = 22, PH = 22;
 const PX = 70;
 
-let canvas, ctx, best = 0;
+let canvas, ctx;
+let best = parseInt(localStorage.getItem('gf_best') || '0');
 let player, obstacles, particles, score, speed, frame, state;
 let shakeTimer, shakeAmt;
 let deathAnim = { active: false, timer: 0, scale: 0, vigAlpha: 0, btnY: 0, btnAlpha: 0 };
@@ -416,7 +418,11 @@ function setState(s) {
 function drawHUD() {
   document.getElementById('gf-score').textContent=Math.floor(score/10);
   document.getElementById('gf-speed').textContent=speed.toFixed(1)+'x';
-  if(score>best){best=score;document.getElementById('gf-best').textContent=Math.floor(best/10);}
+  if(score>best){
+  best=score;
+  localStorage.setItem('gf_best', best);
+  document.getElementById('gf-best').textContent=Math.floor(best/10);
+}
 }
 
 function drawIdleScreen() {
@@ -465,13 +471,17 @@ function rrTop(ctx,x,y,w,h,r){ctx.beginPath();ctx.moveTo(x+r,y);ctx.lineTo(x+w-r
 
 // --- INIT ---
 function init() {
-  canvas=document.getElementById('gf-canvas');
-  canvas.width=W; canvas.height=H;
+  canvas = document.getElementById('gf-canvas');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  canvas.style.width = '100vw';
+  canvas.style.height = '100vh';
   ctx=canvas.getContext('2d');
   canvas.addEventListener('click',onFlip);
   canvas.addEventListener('touchstart',e=>{e.preventDefault();onFlip();},{passive:false});
   document.addEventListener('keydown',e=>{if(e.code==='Space'){e.preventDefault();onFlip();}});
   setState('idle'); loop();
+  document.getElementById('gf-best').textContent=Math.floor(best/10);
 }
 
 init();

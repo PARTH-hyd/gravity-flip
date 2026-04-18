@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Gravity Flip</string>
+    <string name="title_activity_main">Gravity Flip</string>
+    <string name="package_name">com.parth.gravityflip</string>
+    <string name="custom_url_scheme">com.parth.gravityflip</string>
+</resources>
